@@ -1,14 +1,16 @@
 <div class="container">
   <div class="row">
     <div class="col-md-5">
+
       <form [formGroup]="this.customerService.form" (ngSubmit)="onSubmit()">
         <input type="hidden" name="$key">
 
         <div class="form-group">
           <label>Full Name : </label>
           <input formControlName = "fullName" class="form-control"
-          [ngClass]="{'is-invalid': submitted && this.errfullName}">
-          <div class="invalid-feedback" *ngIf="submitted && this.formControls.fullName.errors">
+          [ngClass]="{'is-invalid':submitted && this.formControls.fullName.errors}">
+          <div class="invalid-feedback" *ngIf="submitted && formControls.fullName.errors">
+
             this field is required!
           </div>
         </div>
@@ -16,17 +18,17 @@
         <div class="form-group">
           <label>Email : </label>
           <input formControlName = "email" class="form-control"
-          [ngClass]="{'is-invalid': submitted && true}">
-          <div class="invalid-feedback" *ngIf="submitted && true">
-              this field is required!
+          [ngClass]="{'is-invalid': submitted && this.formControls.email.errors}">
+          <div class="invalid-feedback" *ngIf="submitted && formControls.email.errors">
+              Invalid Email Address!
             </div>
         </div>
 
         <div class="form-group">
           <label>MobileNo : </label>
           <input formControlName = "mobile" class="form-control"
-          [ngClass]="{'is-invalid': submitted && true}">
-          <div class="invalid-feedback" *ngIf="submitted && true">
+          [ngClass]="{'is-invalid': submitted && this.formControls.mobile.errors}">
+          <div class="invalid-feedback" *ngIf="submitted && formControls.mobile.errors">
               this field is required!
           </div>
         </div>
