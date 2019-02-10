@@ -29,7 +29,8 @@
           <input formControlName = "mobile" class="form-control"
           [ngClass]="{'is-invalid': submitted && this.formControls.mobile.errors}">
           <div class="invalid-feedback" *ngIf="submitted && formControls.mobile.errors">
-              this field is required!
+              <label *ngIf="formControls.mobile.errors.required">this field is required!</label>
+              <label *ngIf="formControls.mobile.errors.minlength">At least 10!</label>
           </div>
         </div>
 
@@ -44,6 +45,9 @@
 
 
       </form>
+      <div class="alert alert-success" *ngIf="submitSuccess">
+        Successfully Submited !
+      </div>
 
     </div>
     <div class="col-md-7">

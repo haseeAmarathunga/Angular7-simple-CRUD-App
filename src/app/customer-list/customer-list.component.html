@@ -1,3 +1,31 @@
-<p>
-  customer-list works!
-</p>
+<form class="form-inline">
+  <input name="searchtext" class="form-control" placeholder="Search.." [(ngModel)]="searchText" style="width : 90%">
+  <button class="btn btn-warning" (click)="searchText=''">x</button>
+</form>
+
+<table class="table table-sm">
+  <thead>
+    <th>FullName</th>
+    <th>Email</th>
+    <th>Mobile</th>
+    <th>Location</th>
+    <th></th>
+
+  </thead>
+
+  <ng-container *ngFor="let customer of customerArray">
+    <tr *ngIf="filterTable(customer)">
+      <td>{{customer.fullName}}</td>
+      <td>{{customer.email}}</td>
+      <td>{{customer.mobile}}</td>
+      <td>{{customer.location}}</td>
+      <td>
+        <button class="btn btn-outline-info" (click) ="customerservice.editCustomer(customer)">Edit</button>
+        <button class="btn btn-outline-danger" (click)="onDelete(customer.$key)">Delete</button>
+      </td>
+    </tr>
+  </ng-container>
+</table>
+<div class="alert alert-danger" *ngIf="deleteSuccess">
+  Successfully deleted!
+</div>
